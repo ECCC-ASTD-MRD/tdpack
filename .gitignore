@@ -1,8 +1,13 @@
+#----- Compiled object/library files
+*.o
+*.a
+
+#----- Editor pattern
+*.sw[po]
 *~
-*.[oa]
-*.so
-*.so.*.*.*
-*.mod
-*.f90
-build/
+*.code-workspace
+
+#----- build directory at the root path
+/build**/*
+/.vscode/
 
