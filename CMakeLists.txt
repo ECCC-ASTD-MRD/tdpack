@@ -53,11 +53,7 @@ install(TARGETS ${PROJECT_NAME}-shared
     ARCHIVE       DESTINATION lib)
 install(FILES ${PROJECT_MODULE_FILES} DESTINATION include)
 
-if(BUILD_SHARED_LIBS)
-    add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME}-shared)
-else()
-    add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME}-static)
-endif()
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME}-static)
 
 # Symbolic link for archive numbered version
 add_custom_command(TARGET ${PROJECT_NAME}-static POST_BUILD
