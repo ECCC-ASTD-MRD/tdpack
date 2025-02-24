@@ -47,8 +47,6 @@ package:rhel-8-icelake-64_inteloneapi-2024.2.0:
       - schedules
    dependencies:
       - build:rhel-8-icelake-64_inteloneapi-2024.2.0
-   environment:
-      name: testing
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-icelake-64/inteloneapi-2024.2.0.sh
@@ -105,8 +103,6 @@ package:rhel-8-icelake-64_inteloneapi-2022.1.2:
       - schedules
    dependencies:
       - build:rhel-8-icelake-64_inteloneapi-2022.1.2
-   environment:
-      name: testing
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-icelake-64/inteloneapi-2022.1.2.sh
@@ -162,8 +158,6 @@ package:rhel-8-amd64_inteloneapi-2022.1.2:
       - schedules
    dependencies:
       - build:rhel-8-amd64_inteloneapi-2022.1.2
-   environment:
-      name: testing
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-amd-64/inteloneapi-2022.1.2.sh
@@ -219,8 +213,6 @@ package:rhel-8-amd64_gnu-9.3.0:
       - schedules
    dependencies:
       - build:rhel-8-amd64_gnu-9.3.0
-   environment:
-      name: testing
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-amd-64/gnu-9.3.0.sh 
@@ -276,8 +268,6 @@ package:rhel-8-icelake-64_inteloneapi-2021.4.0:
       - schedules
    dependencies:
       - build:rhel-8-icelake-64_inteloneapi-2021.4.0
-   environment:
-      name: testing
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-icelake-64/inteloneapi-2021.4.0.sh
@@ -322,8 +312,6 @@ package:rhel-8-amd64_nvhpc_23.7.0:
       - schedules
    dependencies:
       - build:rhel-8-amd64_nvhpc_23.7.0
-   environment:
-      name: testing
    script:
       - source ${ECCI_ENV}/latest/profile.sh
       - export MODULEPATH=~sidr000/modules:$MODULEPATH
@@ -342,7 +330,6 @@ build:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
    variables:
       ORD_SOUMET_MACH    : gpsc7
       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-      ORD_SOUMET_PROJECT : eccc_mrd
    stage: build
    tags:
       - concurrent
@@ -350,6 +337,8 @@ build:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
      - master
      - dev
      - tags
+   environment:
+      name: ubuntu22
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/inteloneapi-2022.1.2.sh
@@ -365,12 +354,13 @@ build:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
 #    variables:
 #       ORD_SOUMET_MACH    : gpsc7
 #       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-#       ORD_SOUMET_PROJECT : eccc_mrd
 #    stage: test
 #    only:
 #       - master
 #       - dev
 #       - tags
+#    environment:
+#       name: ubuntu22
 #    dependencies:
 #       - build:ubuntu-22.04-amd64_inteloneapi-2022.1.2
 #    script:
@@ -384,7 +374,6 @@ package:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
    variables:
       ORD_SOUMET_MACH    : gpsc7
       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-      ORD_SOUMET_PROJECT : eccc_mrd
    stage: package
    tags:
       - concurrent
@@ -396,7 +385,7 @@ package:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
    dependencies:
       - build:ubuntu-22.04-amd64_inteloneapi-2022.1.2
    environment:
-      name: testing
+      name: ubuntu22
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/inteloneapi-2022.1.2.sh
@@ -412,7 +401,6 @@ build:ubuntu-22.04-amd64_inteloneapi-2023.2.0:
    variables:
       ORD_SOUMET_MACH    : gpsc7
       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-      ORD_SOUMET_PROJECT : eccc_mrd
    stage: build
    tags:
       - concurrent
@@ -420,6 +408,8 @@ build:ubuntu-22.04-amd64_inteloneapi-2023.2.0:
      - master
      - dev
      - tags
+   environment:
+      name: ubuntu22
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/inteloneapi-2023.2.0.sh
@@ -435,12 +425,13 @@ build:ubuntu-22.04-amd64_inteloneapi-2023.2.0:
 #    variables:
 #       ORD_SOUMET_MACH    : gpsc7
 #       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-#       ORD_SOUMET_PROJECT : eccc_mrd
 #    stage: test
 #    only:
 #       - master
 #       - dev
 #       - tags
+#    environment:
+#       name: ubuntu22
 #    dependencies:
 #       - build:ubuntu-22.04-amd64_inteloneapi-2023.2.0
 #    script:
@@ -454,7 +445,6 @@ package:ubuntu-22.04-amd64_inteloneapi-2023.2.0:
    variables:
       ORD_SOUMET_MACH    : gpsc7
       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-      ORD_SOUMET_PROJECT : eccc_mrd
    stage: package
    tags:
       - concurrent
@@ -466,7 +456,7 @@ package:ubuntu-22.04-amd64_inteloneapi-2023.2.0:
    dependencies:
       - build:ubuntu-22.04-amd64_inteloneapi-2023.2.0
    environment:
-      name: testing
+      name: ubuntu22
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/inteloneapi-2023.2.0.sh
@@ -482,7 +472,6 @@ build:ubuntu-22.04-amd64_gnu-11.4.0:
    variables:
       ORD_SOUMET_MACH    : gpsc7
       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-      ORD_SOUMET_PROJECT : eccc_mrd
    stage: build
    tags:
       - concurrent
@@ -490,6 +479,8 @@ build:ubuntu-22.04-amd64_gnu-11.4.0:
      - master
      - dev
      - tags
+   environment:
+      name: ubuntu22
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/gnu.sh
@@ -505,12 +496,13 @@ build:ubuntu-22.04-amd64_gnu-11.4.0:
 #   variables:
 #      ORD_SOUMET_MACH    : gpsc7
 #      ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-#      ORD_SOUMET_PROJECT : eccc_mrd
 #   stage: test
 #   only:
 #      - master
 #      - dev
 #      - tags
+#    environment:
+#       name: ubuntu22
 #   dependencies:
 #      - build:ubuntu-22.04-amd64_gnu-11.4.0
 #   script:
@@ -525,7 +517,6 @@ package:ubuntu-22.04-amd64_gnu-11.4.0:
    variables:
       ORD_SOUMET_MACH    : gpsc7
       ORD_SOUMET_IMAGE   : registry.maze.science.gc.ca/ssc-hpcs/generic-job:ubuntu22.04
-      ORD_SOUMET_PROJECT : eccc_mrd
    stage: package
    tags:
       - concurrent
@@ -537,7 +528,7 @@ package:ubuntu-22.04-amd64_gnu-11.4.0:
    dependencies:
       - build:ubuntu-22.04-amd64_gnu-11.4.0
    environment:
-      name: testing
+      name: ubuntu22
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/gnu.sh
@@ -583,8 +574,6 @@ package:rhel-8-amd64_gnu-14.1.0:
       - schedules
    dependencies:
       - build:rhel-8-amd64_gnu-14.1.0
-   environment:
-      name: testing
    script:
       - set +e
       - source ${ECCI_ENV}/latest/profile.sh
