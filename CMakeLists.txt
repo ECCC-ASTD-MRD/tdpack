@@ -19,6 +19,9 @@ ec_build_info()            # Generate build include file (optional)
 include(ec_doxygen)
 include(ec_compiler_presets)
 
+include(CTest)
+add_custom_target(check COMMAND CTEST_OUTPUT_ON_FAILURE=true ${CMAKE_CTEST_COMMAND})
+
 file(GLOB PROJECT_C_FILES src/*.c)
 file(GLOB PROJECT_F_FILES src/*.F90)
 file(GLOB PROJECT_INCLUDE_FILES src/*.h* src/*.inc)
