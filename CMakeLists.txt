@@ -21,6 +21,8 @@ include(ec_compiler_presets)
 
 include(CTest)
 add_custom_target(check COMMAND CTEST_OUTPUT_ON_FAILURE=true ${CMAKE_CTEST_COMMAND})
+add_custom_target(test_execs)
+add_dependencies(check test_execs)
 
 file(GLOB PROJECT_C_FILES src/*.c)
 file(GLOB PROJECT_F_FILES src/*.F90)
